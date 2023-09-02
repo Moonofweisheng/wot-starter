@@ -1,0 +1,41 @@
+@import './mixins/hairline.scss';
+
+.hd-hairline,
+.hd-hairline--top,
+.hd-hairline--left,
+.hd-hairline--right,
+.hd-hairline--bottom,
+.hd-hairline--top-bottom,
+.hd-hairline--surround {
+  position: relative;
+
+  &::after {
+    @include hairline();
+  }
+}
+
+.hd-hairline {
+  &--top::after {
+    border-top-width: 2rpx;
+  }
+
+  &--left::after {
+    border-left-width: 2rpx;
+  }
+
+  &--right::after {
+    border-right-width: 2rpx;
+  }
+
+  &--bottom::after {
+    border-bottom-width: 2rpx;
+  }
+
+  &--top-bottom::after {
+    border-width: 2rpx 0;
+  }
+
+  &--surround::after {
+    border-width: 2rpx;
+  }
+}

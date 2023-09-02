@@ -1,0 +1,24 @@
+{
+  "weixin": {
+    "appid": "微信小程序appid",
+    "privateKeyPath": "密钥文件相对项目根目录的相对路径，例如 key/private.appid.key",
+    "projectPath": "微信小程序产物目录，例如 dist/build/mp-weixin"
+  },
+  "alipay": {
+    "appid": "支付宝小程序appid",
+    "toolId": "支付宝开放平台工具ID",
+    "privateKey": "私钥文本内容",
+    "projectPath": "支付宝小程序产物目录，例如 dist/build/mp-alipay",
+    // 是否版本号自增，配置后忽略 version 字段，建议测试环境开启（支付宝和钉钉小程序不支持上传的版本号小于或等于现有版本号）
+    "autoincrement": true
+  },
+  "dd": {
+    "appid": "钉钉小程序appid,钉钉开发者后台的 MiniAppId 选项",
+    "token": "钉钉开发者后台的 API Token",
+    "projectPath": "钉钉小程序产物目录，例如 dist/build/mp-alipay",
+    // 是否版本号自增，配置后忽略 version 字段，建议测试环境开启（支付宝和钉钉小程序不支持上传的版本号小于或等于现有版本号）
+    "autoincrement": true
+  },
+  "version": "0.0.1",
+  "desc": "版本描述"
+}

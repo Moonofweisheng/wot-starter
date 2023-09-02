@@ -1,0 +1,11 @@
+
+@import "@/uni_modules/fant-mini-plus/libs/css/theme.scss";
+
+// #ifdef MP-WEIXIN 
+:deep(hd-option):not(:last-child) {
+  .hd-option {
+    position: relative;
+    margin-bottom: 48rpx;
+  }
+}
+// #endif
