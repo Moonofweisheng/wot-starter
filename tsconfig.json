@@ -4,20 +4,21 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
-    "resolveJsonModule":true,
+    "resolveJsonModule": true,
     "noImplicitAny": false,
     "importHelpers": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators":true,
+    "experimentalDecorators": true,
     "sourceMap": false,
     "skipLibCheck": true,
     "baseUrl": ".",
     "types": [
       "@dcloudio/types",
       "miniprogram-api-typings",
-      "mini-types"
+      "mini-types",
+      "wot-design-uni/global.d.ts"
     ],
     "paths": {
       "@/*": [

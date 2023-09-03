@@ -1,26 +1,19 @@
-<!--
- * @Author: weisheng
- * @Date: 2021-12-22 15:19:08
- * @LastEditTime: 2023-05-31 14:38:57
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: \uniapp-vue3-fant-ts\src\pages\home\Home.vue
- * 记得注释
--->
 <template>
-  <hd-loading></hd-loading>
-  <hd-toast></hd-toast>
+  <wd-toast></wd-toast>
+  <wd-notify />
   <view class="home">
     <view class="header">
-      <hd-swiper :swiperList="swiperList" card :vertical="false" previousMargin="50rpx" nextMargin="50rpx"></hd-swiper>
+      <!-- <hd-swiper :swiperList="swiperList" card :vertical="false" previousMargin="50rpx" nextMargin="50rpx"></hd-swiper> -->
     </view>
     <view class="main">
-      <hd-grid :column-num="4">
-        <hd-grid-item use-slot v-for="(value, index) in chanel" :key="index" @click="doNavi">
-          <image class="main-img" :src="value.image" />
-          <text class="main-txt">{{ value.txt }}</text>
-        </hd-grid-item>
-      </hd-grid>
+      <wd-grid :column="4" border clickable>
+        <wd-grid-item use-slot v-for="(value, index) in chanel" :key="index" @itemclick="doNavi">
+          <view style="display: flex; flex-direction: column; align-items: center">
+            <image class="main-img" :src="value.image" />
+            <text class="main-txt">{{ value.txt }}</text>
+          </view>
+        </wd-grid-item>
+      </wd-grid>
     </view>
   </view>
 </template>
@@ -28,11 +21,12 @@
 <script lang="ts" setup>
 import DemoApi from '@/api/DemoApi'
 import Chanel from '@/model/Chanel'
-import { useLoading, useToast } from '@/uni_modules/fant-mini-plus'
 import axios from 'axios'
 import { ref } from 'vue'
-const loading = useLoading()
-const toast = useToast()
+import { useNotify, useToast } from 'wot-design-uni'
+const { show: showToast, loading: showLoading, close: hideLoading } = useToast()
+const { showNotify } = useNotify()
+
 const router = useRouter()
 const swiperList = ref([
   {
@@ -48,11 +42,20 @@ const swiperList = ref([
 
 const chanel = ref<Chanel[]>([])
 
-onShow(() => {
+onMounted(() => {
   doInit()
   setTimeout(() => {
     doInit('same')
   }, 400)
+  setTimeout(() => {
+    showNotify({
+      message: '启动超级变换形态',
+      type: 'success',
+      // #ifdef H5
+      safeHeight: 44
+      // #endif
+    })
+  }, 500)
 })
 
 /**
@@ -66,21 +69,21 @@ function doNavi() {
  * 初始化
  */
 function doInit(abortRequest: 'same' | 'all' | 'none' = 'none') {
-  loading.showLoading({})
+  showLoading({ loadingType: 'ring', msg: '初始化' })
   DemoApi.init(abortRequest)
     .then((resp) => {
-      loading.hideLoading()
+      hideLoading()
       chanel.value = resp.data || []
     })
     .catch((error) => {
-      loading.hideLoading()
+      hideLoading()
       // 判断如果是取消的请求则不提示
       if (axios.isCancel(error)) {
         return
       }
-      toast.showToast({
-        title: error.msg,
-        icon: 'error'
+      showToast({
+        msg: error.msg,
+        iconName: 'error'
       })
     })
 }

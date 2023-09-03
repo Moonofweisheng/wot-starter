@@ -1,21 +1,12 @@
-<!--
- * @Author: weisheng
- * @Date: 2021-12-22 15:19:08
- * @LastEditTime: 2023-05-31 17:41:19
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: \uniapp-vue3-fant-ts\src\pages\routerDemo\RouterDemo.vue
- * 记得注释
--->
 <template>
   <view class="router-demo">
     <test></test>
-    <hd-button size="large" type="primary" @click="nav1">字符串路径</hd-button>
-    <hd-button size="large" type="primary" @click="nav2">带有路径的对象</hd-button>
-    <hd-button size="large" type="primary" @click="nav3">命名的路由</hd-button>
-    <hd-button size="large" type="primary" @click="nav4">带查询参数</hd-button>
-    <hd-button size="large" type="primary" @click="nav5">命名的路由传递对象</hd-button>
-    <hd-button size="large" type="primary" @click="nav6">path+query，传递对象</hd-button>
+    <wd-button block size="large" type="primary" @click="nav1">字符串路径</wd-button>
+    <wd-button block size="large" type="primary" @click="nav2">带有路径的对象</wd-button>
+    <wd-button block size="large" type="primary" @click="nav3">命名的路由</wd-button>
+    <wd-button block size="large" type="primary" @click="nav4">带查询参数</wd-button>
+    <wd-button block size="large" type="primary" @click="nav5">命名的路由传递对象</wd-button>
+    <wd-button block size="large" type="primary" @click="nav6">path+query，传递对象</wd-button>
   </view>
 </template>
 
@@ -76,12 +67,12 @@ function nav6() {
   padding: 0 24rpx 24rpx;
   display: flex;
   flex-direction: column;
-  :deep(hd-button):not(:last-child) {
-    .hd-button {
+  :deep(wd-button):not(:last-child) {
+    .wd-button {
       margin-bottom: 24rpx;
     }
   }
-  :deep(.hd-button):not(:last-child) {
+  :deep(.wd-button):not(:last-child) {
     margin-bottom: 24rpx;
   }
 }

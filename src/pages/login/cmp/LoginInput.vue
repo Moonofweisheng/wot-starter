@@ -1,10 +1,10 @@
 <!--
  * @Author: weisheng
  * @Date: 2023-04-18 13:23:10
- * @LastEditTime: 2023-08-10 15:26:24
+ * @LastEditTime: 2023-09-03 16:15:00
  * @LastEditors: weisheng
  * @Description: 
- * @FilePath: \uniapp-vue3-fant-ts\src\pages\login\cmp\LoginInput.vue
+ * @FilePath: \wot-starter\src\pages\login\cmp\LoginInput.vue
  * 记得注释
 -->
 <template>
@@ -21,14 +21,14 @@
       :class="{ 'login-input-inp': 'true' }"
     />
     <view class="after-icon" v-if="password" @click="doShow">
-      <hd-icon :name="icon" size="48rpx"></hd-icon>
+      <wd-icon :name="icon" size="16px"></wd-icon>
     </view>
     <view
       :class="[password && modelValue.toString().length ? 'before-icon' : 'after-icon']"
       v-if="clearable && modelValue.toString().length && focus"
       @click="doClear"
     >
-      <hd-icon name="ic_close_fill" size="48rpx"></hd-icon>
+      <wd-icon name="error-fill" size="16px"></wd-icon>
     </view>
   </view>
 </template>
@@ -58,7 +58,7 @@ const showPassword = ref<boolean>(false) // 是否显示密码
 
 // 隐藏按钮图标
 const icon = computed(() => {
-  return showPassword.value ? 'ic_visible_line' : 'ic_invisible_line'
+  return showPassword.value ? 'view' : 'eye-close'
 })
 
 // 事件
@@ -101,7 +101,7 @@ function doShow() {
   height: 88rpx;
   font-size: 28rpx;
   font-weight: 500;
-  color: $color-text-secondary;
+  // color: $color-text-secondary;
   border-radius: 44rpx;
   overflow: hidden;
   background: #f3f4f6;
@@ -120,7 +120,7 @@ function doShow() {
     font-size: 28rpx;
     font-weight: 500;
     line-height: 88rpx;
-    color: $color-text-fourth;
+    // color: $color-text-fourth;
   }
   .after-icon {
     position: absolute;

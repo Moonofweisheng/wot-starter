@@ -1,15 +1,16 @@
 /*
  * @Author: weisheng
  * @Date: 2023-03-21 22:49:24
- * @LastEditTime: 2023-05-31 17:47:18
+ * @LastEditTime: 2023-09-03 13:07:25
  * @LastEditors: weisheng
  * @Description:
- * @FilePath: \uniapp-vue3-fant-ts\vite.config.ts
+ * @FilePath: \wot-starter\vite.config.ts
  * 记得注释
  */
 import { defineConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 import AutoImport from 'unplugin-auto-import/vite'
+
 export default defineConfig({
   base: './',
   plugins: [

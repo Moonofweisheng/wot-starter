@@ -1,51 +1,59 @@
 <!--
  * @Author: weisheng
  * @Date: 2021-12-22 15:19:08
- * @LastEditTime: 2023-05-09 20:54:39
+ * @LastEditTime: 2023-09-03 16:30:20
  * @LastEditors: weisheng
  * @Description: 
- * @FilePath: \uniapp-vue3-fant-ts\src\pages\mine\Mine.vue
+ * @FilePath: \wot-starter\src\pages\mine\Mine.vue
  * 记得注释
 -->
 <template>
-  <hd-modal></hd-modal>
-  <hd-toast></hd-toast>
-
-  <view class="mine">
-    <view class="tools">
-      <hd-icon name="ic_scan_line" size="48rpx" color="#292C39" @click="doScan"></hd-icon>
-      <hd-icon name="ic_setup_fill" size="48rpx" color="#292C39"></hd-icon>
-    </view>
-    <view class="header">
-      <view class="header-user">
-        <image src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" class="header-user-avatar"></image>
-        <view class="header-user-nickname">
-          <view class="nickname">{{ userInfo?.nickName }}🧑‍💻</view>
-          <view class="info">{{ userInfo?.school }}</view>
+  <view>
+    <wd-message-box></wd-message-box>
+    <wd-toast></wd-toast>
+    <view class="mine">
+      <view class="tools">
+        <wd-icon name="scan" size="48rpx" color="#292C39" @click="doScan"></wd-icon>
+        <wd-icon name="setting" size="48rpx" color="#292C39"></wd-icon>
+      </view>
+      <view class="header">
+        <view class="header-user">
+          <image src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" class="header-user-avatar"></image>
+          <view class="header-user-nickname">
+            <view class="nickname">{{ userInfo?.nickName }}🧑‍💻</view>
+            <view class="info">{{ userInfo?.school }}</view>
+          </view>
+          <view class="header-user-more">
+            <wd-icon name="note" size="48rpx" color="#BEC0C7"></wd-icon>
+          </view>
         </view>
-        <view class="header-user-more">
-          <hd-icon name="ic_sort_fill" size="48rpx" color="#BEC0C7"></hd-icon>
+        <view class="header-target">
+          <view class="header-target-item" v-for="(item, key) of target" :key="key">
+            <text class="label">{{ item }}</text>
+            <text class="value">{{ key }}</text>
+          </view>
         </view>
       </view>
-      <view class="header-target">
-        <view class="header-target-item" v-for="(item, key) of target" :key="key">
-          <text class="label">{{ item }}</text>
-          <text class="value">{{ key }}</text>
-        </view>
+      <view class="main">
+        <wd-cell-group border>
+          <wd-cell title="余额" value="9999999999+" is-link />
+          <wd-cell title="定位" value="天涯海角" is-link icon="evaluation" />
+          <wd-cell title="退出当前账号" @click="doLogout" icon="translate-bold" is-link />
+        </wd-cell-group>
       </view>
-    </view>
-    <view class="main">
-      <hd-cell title="余额" value="9999999999+" align="right" is-link hasLine />
-      <hd-cell title="定位" align="right" value="天涯海角" is-link hasLine icon="ic_address_fill" />
-      <hd-cell title="退出当前账号" @click="doLogout" icon="ic_shutdown_line" is-link hasLine />
     </view>
   </view>
 </template>
 
 <script lang="ts" setup>
-import { useModal, useToast } from '@/uni_modules/fant-mini-plus'
-const modal = useModal()
+import { useMessage, useNotify } from 'wot-design-uni'
+import { useToast } from 'wot-design-uni'
+const { showNotify } = useNotify()
+
 const toast = useToast()
+const message = useMessage()
+
+const safeHeight = ref<number>(44)
 
 const { userInfo } = storeToRefs(useAuthStore()) // 解构pinia的store
 const router = useRouter()
@@ -64,8 +72,7 @@ function doScan() {
     success: (res) => {
       // 扫码内容
       const code: string = res.result || ''
-
-      toast.showToast(`扫码内容：${code}`)
+      toast.show(`扫码内容：${code}`)
     }
   })
 }
@@ -74,17 +81,16 @@ function doScan() {
  * 登出
  */
 function doLogout() {
-  modal.showModal({
-    title: '提示',
-    content: '确认退出当前登录账号吗？',
-    success: (action) => {
-      if (action.confirm) {
-        // 点击的确认按钮
-        useAuthStore().logout()
-        router.replaceAll({ name: 'login' })
-      }
-    }
-  })
+  message
+    .confirm({ title: '提示', msg: '确认退出当前登录账号吗？' })
+    .then(() => {
+      // 点击的确认按钮
+      useAuthStore().logout()
+      router.replaceAll({ name: 'login' })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 }
 </script>
 

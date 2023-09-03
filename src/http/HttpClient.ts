@@ -1,4 +1,3 @@
-import { CommonUtil } from '@/uni_modules/fant-mini-plus'
 import axios from 'axios'
 import { uniAdapter } from 'fant-axios-adapter'
 import AxiosCancelToken from './AxiosCancelToken'
@@ -27,7 +26,7 @@ export default class ApiClient {
         // 设置conten-type
         request.headers ? (request.headers['Content-Type'] = 'application/json') : (request.headers = { 'Content-Type': 'application/json' })
         // 设置请求唯一标识（便于查询请求日志）
-        request.headers.trace_id = CommonUtil.dateFormat(new Date().getTime(), 'yyyyMMddHHmmssSSS')
+        request.headers.trace_id = new Date().getTime()
         switch (abortRequest) {
           case 'all':
             axiosCancelToken.removeAllRequest()

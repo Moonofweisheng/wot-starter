@@ -1,15 +1,5 @@
-<!--
- * @Author: weisheng
- * @Date: 2021-12-22 15:19:08
- * @LastEditTime: 2023-05-22 16:12:41
- * @LastEditors: weisheng
- * @Description: 
- * @FilePath: \uniapp-vue3-fant-ts\src\pages\login\Login.vue
- * 记得注释
--->
 <template>
-  <hd-loading></hd-loading>
-  <hd-toast></hd-toast>
+  <wd-toast></wd-toast>
   <view class="login">
     <view class="login-main">
       <text class="login-main-title">欢迎登陆</text>
@@ -19,11 +9,11 @@
         <view class="login-password">
           <login-input key="password" v-model="password" password clearable placeholder="密码" :maxlength="20"></login-input>
         </view>
-        <hd-button size="large" type="primary" :disabled="disabled" @click="doLogin">登录</hd-button>
+        <wd-button size="large" block type="primary" :disabled="disabled" @click="doLogin">登录</wd-button>
       </view>
     </view>
     <view class="login-footer">
-      <text>fant-mini-plus</text>
+      <text>Wot Design Uni</text>
     </view>
   </view>
 </template>
@@ -31,11 +21,10 @@
 <script lang="ts" setup>
 import DemoApi from '@/api/DemoApi'
 import LoginInput from './cmp/LoginInput.vue'
-import { useLoading, useToast } from '@/uni_modules/fant-mini-plus'
+import { useToast } from 'wot-design-uni/components/wd-toast'
 
 const username = ref<string>('') // 用户名
 const password = ref<string>('') // 密码
-const loading = useLoading()
 const toast = useToast()
 const { userInfo } = storeToRefs(useAuthStore()) // 解构pinia的store
 const router = useRouter() // 路由
@@ -47,23 +36,17 @@ const disabled = computed(() => {
 
 // 登录接口
 function doLogin() {
-  loading.showLoading({})
+  toast.loading({ loadingType: 'ring', msg: '登录中' })
   DemoApi.login()
     .then((resp) => {
-      loading.hideLoading()
-      toast.showToast({
-        title: '登录成功',
-        icon: 'success'
-      })
+      toast.close()
+      toast.success('登录成功')
       userInfo.value = resp.data
       router.replaceAll({ name: 'home' })
     })
     .catch((error) => {
-      loading.hideLoading()
-      toast.showToast({
-        title: error.msg,
-        icon: 'error'
-      })
+      toast.close()
+      toast.error(error.msg)
     })
 }
 </script>
@@ -71,7 +54,7 @@ function doLogin() {
 <style lang="scss" scoped>
 .login {
   font-family: PingFangSC-Regular, PingFang SC;
-  background-color: $color-white;
+  background-color: #ffffff;
   height: calc(100vh - var(--window-top));
   width: 100vw;
   box-sizing: border-box;
@@ -85,13 +68,13 @@ function doLogin() {
       height: 64rpx;
       font-size: 48rpx;
       font-weight: 600;
-      color: $color-text-secondary;
+      // color: $color-text-secondary;
       line-height: 64rpx;
       letter-spacing: 8rpx;
     }
     &-subtitle {
       font-size: 28rpx;
-      color: $color-text-thirdly;
+      // color: $color-text-thirdly;
       line-height: 40rpx;
       letter-spacing: 12rpx;
       text-align: center;
