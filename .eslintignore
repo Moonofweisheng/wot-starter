@@ -1,4 +1,3 @@
 babel.config.js
-src/uni_modules/mp-html/*
-src/uni_modules/fant-mini-plus/*
+src/uni_modules/*
 koa-mock
