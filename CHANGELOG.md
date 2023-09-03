@@ -1,6 +1,13 @@
 # 更新日志 
 
 
+### [1.0.1](https://github.com/Moonofweisheng/wot-starter/compare/v1.0.0...v1.0.1) (2023-09-03)
+
+
+### ✏️ Documentation | 文档
+
+* ✏️  基于Wot Design Uni的uni-app快速启动模板发布 ([db22458](https://github.com/Moonofweisheng/wot-starter/commit/db22458259c5ead4b0e17193adca1a66cf72ac37))
+
 ## 1.0.0 (2023-09-03)
 
 
