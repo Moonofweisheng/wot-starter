@@ -50,10 +50,7 @@ onMounted(() => {
   setTimeout(() => {
     showNotify({
       message: '启动超级变换形态',
-      type: 'success',
-      // #ifdef H5
-      safeHeight: 44
-      // #endif
+      type: 'success'
     })
   }, 500)
 })
