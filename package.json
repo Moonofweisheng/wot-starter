@@ -35,7 +35,7 @@
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "type-check": "vue-tsc --noEmit",
-    "prepare": "husky install && cd koa-mock && npm install",
+    "prepare": "husky install",
     "lint": "eslint --fix --ext .js,.vue,.ts src",
     "commit": "git-cz",
     "release-major": "standard-version --release-as major",
