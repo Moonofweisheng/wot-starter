@@ -12725,10 +12725,10 @@ wordwrap@^1.0.0:
   resolved "https://registry.npmmirror.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
   integrity sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==
 
-wot-design-uni@^0.1.14:
-  version "0.1.14"
-  resolved "https://registry.npmjs.org/wot-design-uni/-/wot-design-uni-0.1.14.tgz#ce4fe993774ec2cd378da51534db9c987b01daa1"
-  integrity sha512-KiUxIItEQ7KFRKpoBvCxXELdjAXEciajacuHURp+SePwY8vd8YX/ysv3Pf+fhS3tn/4ndqLgbDMB+Trj0t4yoA==
+wot-design-uni@^0.1.20:
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/wot-design-uni/-/wot-design-uni-0.1.20.tgz#7c13f04e59807ea2391f319d6272d5071bf757cf"
+  integrity sha512-J99jpZ0SB1Fr5NnaRtDzPiI0fOaLdUEQamwFCwLmtLP+aC+V5C1cIZzZdYAfRGXTIHdVtoX6YCSseDPX/RtGIA==
 
 wrap-ansi@^6.2.0:
   version "6.2.0"
