@@ -3,7 +3,20 @@
   <wd-notify />
   <view class="home">
     <view class="header">
-      <!-- <hd-swiper :swiperList="swiperList" card :vertical="false" previousMargin="50rpx" nextMargin="50rpx"></hd-swiper> -->
+      <view class="card-swiper">
+        <wd-swiper
+          autoplay
+          :current="4"
+          custom-indicator-class="custom-indicator-class"
+          custom-image-class="custom-image"
+          custom-next-image-class="custom-image-prev"
+          custom-prev-image-class="custom-image-prev"
+          :indicator="{ type: 'dots' }"
+          :list="swiperList"
+          previousMargin="24px"
+          nextMargin="24px"
+        ></wd-swiper>
+      </view>
     </view>
     <view class="main">
       <wd-grid :column="4" border clickable>
@@ -25,19 +38,14 @@ import axios from 'axios'
 import { ref } from 'vue'
 import { useNotify, useToast } from 'wot-design-uni'
 const { show: showToast, loading: showLoading, close: hideLoading } = useToast()
-const { showNotify } = useNotify()
 
 const router = useRouter()
 const swiperList = ref([
-  {
-    img: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
-  },
-  {
-    img: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
-  },
-  {
-    img: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
-  }
+  'https://cdn.jsdelivr.net/npm/wot-design-uni-assets/redpanda.jpg',
+  'https://cdn.jsdelivr.net/npm/wot-design-uni-assets/capybara.jpg',
+  'https://cdn.jsdelivr.net/npm/wot-design-uni-assets/panda.jpg',
+  'https://img.yzcdn.cn/vant/cat.jpeg',
+  'https://cdn.jsdelivr.net/npm/wot-design-uni-assets/meng.jpg'
 ])
 
 const chanel = ref<Chanel[]>([])
@@ -47,12 +55,6 @@ onMounted(() => {
   setTimeout(() => {
     doInit('same')
   }, 400)
-  setTimeout(() => {
-    showNotify({
-      message: '启动超级变换形态',
-      type: 'success'
-    })
-  }, 500)
 })
 
 /**
@@ -95,6 +97,22 @@ function doInit(abortRequest: 'same' | 'all' | 'none' = 'none') {
   padding: 0 24rpx 24rpx;
   .header {
     margin-bottom: 24rpx;
+    .card-swiper {
+      --wot-swiper-radius: 0;
+      --wot-swiper-item-padding: 0 24rpx;
+      --wot-swiper-nav-dot-color: #e7e7e7;
+      --wot-swiper-nav-dot-active-color: #4d80f0;
+      padding-bottom: 24rpx;
+      // :deep(.custom-indicator-class) {
+      //   bottom: -16px;
+      // }
+      :deep(.custom-image) {
+        border-radius: 12rpx;
+      }
+      :deep(.custom-image-prev) {
+        height: 168px !important;
+      }
+    }
   }
   .main {
     &-img {
