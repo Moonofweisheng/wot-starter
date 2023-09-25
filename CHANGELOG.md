@@ -1,6 +1,14 @@
 # 更新日志 
 
 
+### [1.0.2](https://github.com/Moonofweisheng/wot-starter/compare/v1.0.1...v1.0.2) (2023-09-25)
+
+
+### ✨ Features | 新功能
+
+* ✨ 更新wot-design-uni版本至0.1.8 ([d89764c](https://github.com/Moonofweisheng/wot-starter/commit/d89764cb1dc9d8f27988f7c85f43929b5c3d56fc))
+* ✨ 更新wot-design-uni版本至0.1.9 ([d149a94](https://github.com/Moonofweisheng/wot-starter/commit/d149a9474db6d4aa4d5bbced901d19721f775ffa))
+
 ### [1.0.1](https://github.com/Moonofweisheng/wot-starter/compare/v1.0.0...v1.0.1) (2023-09-03)
 
 
