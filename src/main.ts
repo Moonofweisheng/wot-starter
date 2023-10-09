@@ -11,6 +11,7 @@ import { createSSRApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { persist } from './store/persist'
+import 'uno.css'
 
 const pinia = createPinia()
 pinia.use(persist)
