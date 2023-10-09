@@ -101,6 +101,8 @@
     "uni-mini-ci": "^0.0.7",
     "uni-mini-router": "0.1.3",
     "uni-parse-pages": "^0.0.1",
+    "unocss": "^0.56.5",
+    "unocss-preset-weapp": "^0.56.0",
     "unplugin-auto-import": "^0.15.3",
     "vite": "4.1.4",
     "vue-eslint-parser": "^9.1.0",
