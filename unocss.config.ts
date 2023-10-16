@@ -8,13 +8,13 @@ export default {
     // https://github.com/MellowCo/unocss-preset-weapp
     presetWeapp(),
     // attributify autocomplete
-    presetWeappAttributify(),
+    presetWeappAttributify()
   ],
   shortcuts: [
     {
       'border-base': 'border border-gray-500_10',
-      'center': 'flex justify-center items-center',
-    },
+      center: 'flex justify-center items-center'
+    }
   ],
 
   transformers: [
@@ -22,6 +22,6 @@ export default {
     transformerAttributify(),
 
     // https://github.com/MellowCo/unocss-preset-weapp/tree/main/src/transformer/transformerClass
-    transformerClass(),
+    transformerClass()
   ]
 }
