@@ -1,6 +1,8 @@
 # 更新日志 
 
 
+### [1.0.3](https://github.com/Moonofweisheng/wot-starter/compare/v1.0.2...v1.0.3) (2023-10-17)
+
 ### [1.0.2](https://github.com/Moonofweisheng/wot-starter/compare/v1.0.1...v1.0.2) (2023-09-25)
 
 
