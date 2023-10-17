@@ -1,9 +1,13 @@
-# Wot-Starter
+<p align="center">
+    <img alt="logo" src="https://wot-design-uni.cn/wot-design.png" width="200">
+</p>
 
-#### 介绍
-[Wot Design Uni](https://github.com/Moonofweisheng/wot-design-uni.git) 组件库的快速启动模板。
+<h1 align="center">Wot Starter</h1>
 
-#### 特性
+<p align="center">📱 一个基于<a href="https://github.com/Moonofweisheng/wot-design-uni.git">Wot Design Uni</a>组件库的快速启动模板</p>
+
+
+## ✨ 特性
 
 - 🚀 使用vue3/vite4/pinia/axios等主流框架开发
 - 🚀 引入Wot Design Uni组件库，开箱即用
@@ -12,11 +16,9 @@
 - 💪 使用pinia，并支持持久化存储
 - 💪 提供koa-mock本地mock服务
 - 💪 支持axios取消请求（基于requestTask.abort()实现）
-## 注意！！！
->插件市场会将类似`.eslintrc.js`这种以`.`开头的文件忽略掉，故我将`.`改成了`_`上传。如果直接在插件市场下载，需要手动将`_`改为`.`，涉及文件及目录包含`_husky`、`_vscode`、`_env.development`、`_env.production`、`_eslintignore`、`_eslintrc.js`、`_git-cz.json`、`_gitignore`、`_prettierrc`。或者到[Github](https://github.com/Moonofweisheng/wot-starter)上`clone`或`fork`。
 
 
-#### 项目依赖
+## 项目依赖
 
 | 功能 | 依赖库 |
 | --- | --- |
@@ -28,76 +30,27 @@
 | 发布日志 | `standard-version` |
 | 状态管理 | `pinia`（自定义插件实现持久化） |
 
+## 链接
 
-#### 主要命令
-
-##### 安装依赖
-```
-yarn 
-```
-或者  
-```
-npm install
-```
-##### 安装mock依赖
-```
-yarn mock:install
-```
-或者  
-```
-npm run mock:install
-```
-
-##### 运行
-```sh
-# 运行到h5
-yarn dev:h5
-```
-##### 运行mock服务
-```sh
-yarn mock:dev
-```
+* [QQ 群](https://qm.qq.com/cgi-bin/qm/qr?k=O1Z3pal6StL39qHtABqR54Tb56igr90O&jump_from=webapi&authKey=MtVWfi/EQbT03wW7tKXv4bmyKYHBHtzI8VewlzSsOdxFjN0wbgNy17np9Z9yC4Z8)
+* [Wot Design Uni](https://github.com/Moonofweisheng/wot-design-uni.git)
 
 
-##### Lint and fix
-```
-yarn lint
-```
+## 捐赠本项目
 
-##### 提交代码
-```sh
-git add .
+捐赠本项目，支持组件库的更好的发展，捐赠后你的昵称和主页将会被展示在 `wot design uni` 文档的捐赠榜单上。
 
-yarn commit
-```
+### 捐赠组件库
+<a href="https://wot-design-uni.cn/reward/reward.html">Wot Design Uni</a>
 
-##### 发布版本
+### 爱发电捐赠
+
+<a href="https://afdian.net/a/weisheng233">https://afdian.net/a/weisheng233</a>
 
 
-``` sh
-# 大版本
-yarn release-major  
+## Star History
 
-# 中版本
-yarn release-minor
-
-# 小版本
-yarn release-patch
-```
-
-##### 持续集成
-
-```sh
-
-# 上传到微信小程序
-yarn upload:mp-weixin  
-
-# 上传到支付宝小程序
-yarn upload:mp-alipay
-
-# 上传到钉钉小程序
-yarn upload:mp-dingtalk
-```
+[![Star History Chart](https://api.star-history.com/svg?repos=Moonofweisheng/wot-starter&type=Date)](https://star-history.com/#Moonofweisheng/wot-starter&Date)
 
 
 
