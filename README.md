@@ -7,11 +7,17 @@
 <p align="center">📱 一个基于<a href="https://github.com/Moonofweisheng/wot-design-uni.git">Wot Design Uni</a>组件库的快速启动模板</p>
 
 
+## 注意 
+要求 `node >= 16`。
+
+
+
 ## ✨ 特性
 
-- 🚀 使用 vue3 主流技术架构开发
-- 🚀 引入 Wot Design Uni 组件库，开箱即用
-- 💪 使用 Eslint/Prettier，统一前端代码风格
+- 🚀 基于 `vue3` + `Typescript` 主流技术架构开发
+- 🚀 引入 `Wot Design Uni` 组件库，开箱即用
+- ✨ 接入 `Unocss` 原子化 CSS 引擎
+- 💪 使用 `Eslint/Prettier`，统一前端代码风格
 - 💪 完善的代码提交规范，自动生成版本发布日志
 - 💪 提供koa-mock本地mock服务
 
