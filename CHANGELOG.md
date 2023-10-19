@@ -1,6 +1,13 @@
 # 更新日志 
 
 
+### [1.0.4](https://github.com/Moonofweisheng/wot-starter/compare/v1.0.3...v1.0.4) (2023-10-19)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 🐛 支持 Unocss 原子化 css 引擎 ([7b7af39](https://github.com/Moonofweisheng/wot-starter/commit/7b7af39b01662cc0c05b85cebbe9a89c72981760))
+
 ### [1.0.3](https://github.com/Moonofweisheng/wot-starter/compare/v1.0.2...v1.0.3) (2023-10-17)
 
 ### [1.0.2](https://github.com/Moonofweisheng/wot-starter/compare/v1.0.1...v1.0.2) (2023-09-25)
