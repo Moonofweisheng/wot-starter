@@ -9,26 +9,12 @@
 
 ## ✨ 特性
 
-- 🚀 使用vue3/vite4/pinia/axios等主流框架开发
-- 🚀 引入Wot Design Uni组件库，开箱即用
-- 💪 引入Eslint/Prettier，统一前端代码风格
-- 💪 引入lint-staged/husky/commitlint/commitizen/standard-version，统一代码提交规范，自动生成版本发布日志
-- 💪 使用pinia，并支持持久化存储
+- 🚀 使用 vue3 主流技术架构开发
+- 🚀 引入 Wot Design Uni 组件库，开箱即用
+- 💪 使用 Eslint/Prettier，统一前端代码风格
+- 💪 完善的代码提交规范，自动生成版本发布日志
 - 💪 提供koa-mock本地mock服务
-- 💪 支持axios取消请求（基于requestTask.abort()实现）
 
-
-## 项目依赖
-
-| 功能 | 依赖库 |
-| --- | --- |
-| 组件库 | [Wot Design Uni](https://github.com/Moonofweisheng/wot-design-uni.git) |
-| 路由（name跳转和导航守卫） | [uni-mini-router](https://ext.dcloud.net.cn/plugin?id=11208) |
-| 网络请求（支持取消请求） | `axios`  [fant-axios-adapter](https://ext.dcloud.net.cn/plugin?id=11817) |
-| 代码规范 | `Eslint` `Prettier` |
-| 提交规范 | `lint-staged` `husky` `commitlint` `commitizen` |
-| 发布日志 | `standard-version` |
-| 状态管理 | `pinia`（自定义插件实现持久化） |
 
 ## 链接
 
