@@ -12749,10 +12749,10 @@ uni-mini-ci@^0.0.7:
     minidev "^1.8.4"
     miniprogram-ci "^1.9.5"
 
-uni-mini-router@0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/uni-mini-router/-/uni-mini-router-0.1.3.tgz#b92005e263559375df6056dd869dd71f519406bf"
-  integrity sha512-mXkSst2Jd6qVmIYKm+0fG0Q8ulajoBLTo8BuQ3K9ZXl7KgXolH20NofGCBXAB+ErAxhoe1VXjnUU6bt3ls4qdA==
+uni-mini-router@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/uni-mini-router/-/uni-mini-router-0.1.5.tgz#de92f197b747e1027272eb637474e959fe27e58d"
+  integrity sha512-pjeKTkiv1ryR7ANLUGJ0YScvOLTYUBqxUSch+PMJPKZnkQYd79Rg4qmEavwDLp9nOZJl9xrAX22b99FpOgZ/Sw==
 
 uni-parse-pages@^0.0.1:
   version "0.0.1"
