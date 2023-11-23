@@ -8,7 +8,7 @@
  * 记得注释
  */
 export default class BaseResponse<T> {
-  code: Nullable<number> = null
-  msg: Nullable<string> = null
-  data: Nullable<T> = null
+  code: number | null = null
+  msg: string | null = null
+  data: T | null = null
 }

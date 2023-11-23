@@ -10,11 +10,11 @@
 import { createSSRApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import { persist } from './store/persist'
+import { persistPlugin } from './store/persist'
 import 'uno.css'
 
 const pinia = createPinia()
-pinia.use(persist)
+pinia.use(persistPlugin)
 export function createApp() {
   const app = createSSRApp(App)
   app.config.warnHandler = () => null

@@ -1,128 +1,176 @@
 <template>
-  <wd-toast></wd-toast>
-  <wd-notify />
-  <view class="home">
-    <view class="header">
-      <view class="card-swiper">
-        <wd-swiper
-          autoplay
-          :current="4"
-          custom-indicator-class="custom-indicator-class"
-          custom-image-class="custom-image"
-          custom-next-image-class="custom-image-prev"
-          custom-prev-image-class="custom-image-prev"
-          :indicator="{ type: 'dots' }"
-          :list="swiperList"
-          previousMargin="24px"
-          nextMargin="24px"
-        ></wd-swiper>
+  <page-wraper>
+    <view class="home">
+      <view class="home-header p3 pt-0 pb-0">
+        <view class="search" @click="navToSearchPage">
+          <wd-search custom-class="custom-search" hide-cancel placeholder-left disabled placeholder="mate60pro 火热发售中" />
+        </view>
+        <view class="swiper" v-if="imgSrcs.length">
+          <wd-swiper
+            :autoplay="autoplay"
+            :duration="duration"
+            :interval="interval"
+            image-mode="scaleToFill"
+            :current="current"
+            :indicator="{ type: 'dots' }"
+            :list="imgSrcs"
+          ></wd-swiper>
+        </view>
+      </view>
+      <view class="home-main p3 pt-0 pb-0">
+        <view class="tabs" v-if="tabList.length">
+          <wd-tabs v-model="currentTab">
+            <wd-tab v-for="(tab, index) in tabList" :title="tab.label" :key="index"></wd-tab>
+          </wd-tabs>
+        </view>
+        <goods-list :goods="goods" @click="goodListClickHandle" @addcart="goodListAddCartHandle"></goods-list>
+        <wd-loadmore :state="state" @reload="onReTry" />
       </view>
     </view>
-    <view class="main">
-      <wd-grid :column="4" border clickable>
-        <wd-grid-item use-slot v-for="(value, index) in chanel" :key="index" @itemclick="doNavi">
-          <view style="display: flex; flex-direction: column; align-items: center">
-            <image class="main-img" :src="value.image" />
-            <text class="main-txt">{{ value.txt }}</text>
-          </view>
-        </wd-grid-item>
-      </wd-grid>
-    </view>
-  </view>
+  </page-wraper>
 </template>
 
 <script lang="ts" setup>
-import DemoApi from '@/api/DemoApi'
-import Chanel from '@/model/Chanel'
-import axios from 'axios'
-import { ref } from 'vue'
-import { useNotify, useToast } from 'wot-design-uni'
+import type KV from '@/model/KV'
+import { ref, reactive } from 'vue'
+import { fetchHome } from '../../services/home/home'
+import { fetchGoodsList } from '../../services/good/fetchGoods'
+import { useToast } from 'wot-design-uni'
 const { show: showToast, loading: showLoading, close: hideLoading } = useToast()
 
-const router = useRouter()
-const swiperList = ref([
-  'https://cdn.jsdelivr.net/npm/wot-design-uni-assets/redpanda.jpg',
-  'https://cdn.jsdelivr.net/npm/wot-design-uni-assets/capybara.jpg',
-  'https://cdn.jsdelivr.net/npm/wot-design-uni-assets/panda.jpg',
-  'https://img.yzcdn.cn/vant/cat.jpeg',
-  'https://cdn.jsdelivr.net/npm/wot-design-uni-assets/meng.jpg'
-])
+const tabList = ref<KV<string>[]>([])
+const currentTab = ref<number>(0)
+const state = ref<any>('loading')
 
-const chanel = ref<Chanel[]>([])
+const goods = ref<any[]>([])
+const goodsListLoadStatus = ref<number>(0)
+const current = ref<number>(1)
 
-onMounted(() => {
-  doInit()
-  setTimeout(() => {
-    doInit('same')
-  }, 400)
+const imgSrcs = ref<string[]>([])
+
+const autoplay = ref(true)
+const duration = ref<number>(500)
+const interval = ref<number>(5000)
+
+const goodListPagination = reactive({
+  index: 0,
+  num: 20
 })
 
-/**
- * 跳转至路由演示页面
- */
-function doNavi() {
-  router.push({ name: 'routerDemo' })
+onMounted(() => {
+  init()
+})
+
+onReachBottom(() => {
+  if (goodsListLoadStatus.value === 0) {
+    loadGoodsList()
+  }
+})
+
+onPullDownRefresh(() => {
+  init()
+})
+
+const privateData = reactive({
+  tabIndex: 0
+})
+
+const init = () => {
+  // uniCloud
+  // 	.callFunction({
+  // 		name: 'home_swiper_get',
+  // 	})
+  // 	.then(e => {
+  // 		console.log(e);
+  // 	})
+  // 	.catch(e => {
+  // 		console.log(e);
+  // 	});
+
+  loadHomePage()
 }
 
-/**
- * 初始化
- */
-function doInit(abortRequest: 'same' | 'all' | 'none' = 'none') {
-  showLoading({ loadingType: 'ring', msg: '初始化' })
-  DemoApi.init(abortRequest)
-    .then((resp) => {
-      hideLoading()
-      chanel.value = resp.data || []
+const loadHomePage = () => {
+  showLoading({})
+  fetchHome().then(({ swiper, tabList: tabs }) => {
+    tabList.value = tabs
+    imgSrcs.value = swiper
+    hideLoading()
+    loadGoodsList(true)
+  })
+}
+
+const tabChangeHandle = (e) => {
+  privateData.tabIndex = e.detail
+  loadGoodsList(true)
+}
+
+const onReTry = () => {
+  loadGoodsList()
+}
+
+const loadGoodsList = async (fresh = false) => {
+  if (fresh) {
+    uni.pageScrollTo({
+      scrollTop: 0
     })
-    .catch((error) => {
-      hideLoading()
-      // 判断如果是取消的请求则不提示
-      if (axios.isCancel(error)) {
-        return
-      }
-      showToast({
-        msg: error.msg,
-        iconName: 'error'
-      })
-    })
+  }
+
+  goodsListLoadStatus.value = 1
+
+  const pageSize = goodListPagination.num
+  let pageIndex = privateData.tabIndex * pageSize + goodListPagination.index + 1
+  if (fresh) {
+    pageIndex = 0
+  }
+
+  try {
+    const nextList = await fetchGoodsList(pageIndex, pageSize)
+    if (fresh) {
+      goods.value = nextList
+    } else {
+      goods.value = goods.value.concat(nextList)
+    }
+    goodsListLoadStatus.value = 0
+
+    goodListPagination.index = pageIndex
+    goodListPagination.num = pageSize
+  } catch (err) {
+    goodsListLoadStatus.value = 3
+  }
+}
+
+const goodListClickHandle = ({ index }) => {
+  const { spuId } = goods.value[index]
+  // router.push(`/pages/goods/details/index?spuId=${spuId}`);
+}
+
+const goodListAddCartHandle = () => {
+  showToast('点击加入购物车')
+}
+
+const navToSearchPage = () => {
+  // router.push('/pages/goods/search/index');
+}
+
+const navToActivityDetail = ({ detail }) => {
+  const { index: promotionID = 0 } = detail || {}
+  // router.push(`/pages/promotion-detail/index?promotion_id=${promotionID}`);
 }
 </script>
 
 <style lang="scss" scoped>
 .home {
-  min-height: calc(100vh - var(--window-top) - var(--window-bottom));
   width: 100vw;
   box-sizing: border-box;
   background: #fff;
-  padding: 0 24rpx 24rpx;
-  .header {
-    margin-bottom: 24rpx;
-    .card-swiper {
-      --wot-swiper-radius: 0;
-      --wot-swiper-item-padding: 0 24rpx;
-      --wot-swiper-nav-dot-color: #e7e7e7;
-      --wot-swiper-nav-dot-active-color: #4d80f0;
-      padding-bottom: 24rpx;
-      // :deep(.custom-indicator-class) {
-      //   bottom: -16px;
-      // }
-      :deep(.custom-image) {
-        border-radius: 12rpx;
+
+  .home-header {
+    .search {
+      margin-bottom: 20rpx;
+      :deep(.custom-search) {
+        padding: 0;
       }
-      :deep(.custom-image-prev) {
-        height: 168px !important;
-      }
-    }
-  }
-  .main {
-    &-img {
-      width: 64rpx;
-      height: 64rpx;
-      margin-bottom: 24rpx;
-    }
-    &-txt {
-      font-size: 20rpx;
-      color: #646566;
     }
   }
 }

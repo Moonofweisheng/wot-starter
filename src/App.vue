@@ -1,7 +1,7 @@
 <!--
  * @Author: weisheng
  * @Date: 2023-03-09 19:23:03
- * @LastEditTime: 2023-09-03 11:40:22
+ * @LastEditTime: 2023-11-21 23:14:22
  * @LastEditors: weisheng
  * @Description: 
  * @FilePath: \wot-starter\src\App.vue
@@ -9,6 +9,9 @@
 -->
 <script setup lang="ts">
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
+import useUpdateManager from './composables/useUpdateManager'
+useUpdateManager()
+
 onLaunch((ctx) => {
   console.log('App Launch')
 })
