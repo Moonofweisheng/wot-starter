@@ -38,24 +38,6 @@
       }
     },
     {
-      "path": "pages/login/Login",
-      "name": "login",
-      "style": {
-        "mp-alipay": {
-          "allowsBounceVertical": "NO"
-        },
-        "navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/mine/Mine",
-      "name": "mine",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationBarBackgroundColor": "#E7F0FF"
-      }
-    },
-    {
       "path": "pages/cart/index",
       "name": "cart",
       "style": {

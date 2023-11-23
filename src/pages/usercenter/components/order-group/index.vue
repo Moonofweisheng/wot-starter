@@ -1,7 +1,7 @@
 <!--
  * @Author: weisheng
  * @Date: 2023-11-21 22:27:38
- * @LastEditTime: 2023-11-21 23:01:38
+ * @LastEditTime: 2023-11-23 17:06:44
  * @LastEditors: weisheng
  * @Description: 
  * @FilePath: \wot-starter\src\pages\usercenter\components\order-group\index.vue
@@ -20,7 +20,7 @@
         @click="onClickItem"
       >
         <view class="mb-2 w-56 h-56 relative">
-          <wd-badge :model-value="item.orderNum" :max="99" :hidden="!item.orderNum" color="#FF4646">
+          <wd-badge :model-value="item.orderNum" :max="99" color="#FF4646">
             <wd-icon
               :name="item.iconName"
               size="56rpx"

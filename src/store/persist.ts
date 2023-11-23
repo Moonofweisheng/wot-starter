@@ -10,6 +10,12 @@
 import { PiniaPluginContext } from 'pinia'
 import { deepClone } from 'wot-design-uni/components/common/util'
 
+/**
+ *
+ * @param param0
+ * @param excludedIds // 持久化排除的key
+ * @returns
+ */
 function persist({ store }: PiniaPluginContext, excludedIds: string[]) {
   // 检查当前store的id是否在排除列表中
   const isExcluded = excludedIds.includes(store.$id)
